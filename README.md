@@ -183,7 +183,7 @@ dsh plugin --profile desktop add <clone 目录>
 | **工具调用** | ✅ **Antigravity 用自己的工具，能读写文件/跑命令** |
 | **权限审批** | ✅ supervised 模式转发到 DSH 弹窗 |
 | 工具活动展示 | ✅ `[agy] ...` 写入对话流，可关 |
-| 图片输入 | ❌ 未实现 |
+| 图片输入 | ✅ 经 `attachments` 读附件字节，组装 ACP image block 直传；读取失败降级为占位 |
 
 ## 已知限制
 
