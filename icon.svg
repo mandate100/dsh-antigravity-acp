@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Antigravity ACP">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4285F4"/>
+      <stop offset="50%" stop-color="#34A853"/>
+      <stop offset="100%" stop-color="#FBBC05"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#14161a"/>
+  <!-- 向上的箭头：摆脱重力，呼应 Antigravity -->
+  <path d="M32 14 L44 34 H37 V50 H27 V34 H20 Z" fill="url(#g)"/>
+  <!-- 底部两道引力线 -->
+  <rect x="18" y="54" width="12" height="2.5" rx="1.25" fill="#4285F4" opacity="0.85"/>
+  <rect x="34" y="54" width="12" height="2.5" rx="1.25" fill="#FBBC05" opacity="0.85"/>
+</svg>

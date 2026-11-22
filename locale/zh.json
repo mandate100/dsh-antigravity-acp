@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Antigravity (ACP)",
+    "description": "通过官方 ACP 服务把 Antigravity CLI 接入为 DSH 模型供应商。工具交给 DSH，单账号、不读取凭据、不伪装客户端。"
+  }
+}

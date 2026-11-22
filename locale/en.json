@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Antigravity (ACP)",
+    "description": "Use the Antigravity CLI as a DSH model provider through its official ACP server. Tools stay with DSH. Single account, no credential handling, no client spoofing."
+  }
+}
