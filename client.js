@@ -224,6 +224,11 @@ window.__ModuleLoader__.load({
           ),
         ),
 
+        // ---------- 合规徽章行（呼应仓库 FAQ） ----------
+        h('div', { style: { display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 12 } }, [
+          ['官方协议', 'ok'], ['真实身份', 'ok'], ['凭据隔离', 'ok'], ['单账号', 'ok'], ['模型白名单', 'ok'],
+        ].map(([label, tone]) => h(Badge, { key: label, tone }, label))),
+
         // ---------- 状态卡 ----------
         h('div', {
           style: {
@@ -355,34 +360,41 @@ window.__ModuleLoader__.load({
         }, e2(msg.text)),
 
         // ---------- 诊断 ----------
-        h('div', { style: { fontWeight: 500, margin: '16px 0 8px' } }, '诊断'),
-        h('div', { style: { display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 8 } },
-          h(Btn, { onClick: () => runDiag('proxy'), busy: diag.phase === 'loading' },
-            '测代理连通性'),
-          h(Btn, { onClick: () => runDiag('login'), busy: diag.phase === 'loading' },
-            '测 agy 登录'),
-          st?.proxy && h(Btn, {
-            onClick: async () => {
-              const ok = await copyText('curl.exe -x ' + st.proxy + ' -s -o NUL -w "%{http_code}" -X POST https://oauth2.googleapis.com/token');
-              if (ok) {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-              }
-            },
-            title: '把代理连通性测试命令复制到剪贴板，在终端粘贴执行。输出 400 说明链路可达，000 说明代理不通',
-          }, copied ? '已复制' : '复制 curl 命令'),
-        ),
-        diag.phase !== 'idle' && h('pre', {
+        h('div', {
           style: {
-            margin: 0, padding: '10px 12px', borderRadius: 8, fontSize: 12,
-            background: 'rgba(128,128,128,.1)', whiteSpace: 'pre-wrap',
-            wordBreak: 'break-all', maxHeight: 160, overflow: 'auto',
-            fontFamily: 'Consolas, monospace', fontVariantNumeric: 'tabular-nums',
+            border: '1px solid rgba(128,128,128,.2)', borderRadius: 12,
+            padding: '12px 16px', margin: '16px 0',
           },
         },
-          diag.phase === 'loading' ? '执行中'
-            : diag.phase === 'error' ? '错误: ' + diag.output
-            : (diag.output || '（无输出）')),
+          h('div', { style: { fontWeight: 500, marginBottom: 10 } }, '诊断'),
+          h('div', { style: { display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 8 } },
+            h(Btn, { onClick: () => runDiag('proxy'), busy: diag.phase === 'loading' },
+              '测代理连通性'),
+            h(Btn, { onClick: () => runDiag('login'), busy: diag.phase === 'loading' },
+              '测 agy 登录'),
+            st?.proxy && h(Btn, {
+              onClick: async () => {
+                const ok = await copyText('curl.exe -x ' + st.proxy + ' -s -o NUL -w "%{http_code}" -X POST https://oauth2.googleapis.com/token');
+                if (ok) {
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }
+              },
+              title: '把代理连通性测试命令复制到剪贴板，在终端粘贴执行。输出 400 说明链路可达，000 说明代理不通',
+            }, copied ? '已复制' : '复制 curl 命令'),
+          ),
+          diag.phase !== 'idle' && h('pre', {
+            style: {
+              margin: 0, padding: '10px 12px', borderRadius: 8, fontSize: 12,
+              background: 'rgba(128,128,128,.1)', whiteSpace: 'pre-wrap',
+              wordBreak: 'break-all', maxHeight: 160, overflow: 'auto',
+              fontFamily: 'Consolas, monospace', fontVariantNumeric: 'tabular-nums',
+            },
+          },
+            diag.phase === 'loading' ? '执行中'
+              : diag.phase === 'error' ? '错误: ' + diag.output
+              : (diag.output || '（无输出）')),
+        ),
       );
     }
 

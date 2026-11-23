@@ -1,6 +1,6 @@
 # dsh-antigravity-acp
 
-**English** | [中文](#中文)
+**English** | [中文](#中文) | [FAQ / 常见问题](FAQ.md)
 
 ---
 
